@@ -1,216 +1,216 @@
-# 🏗️ Infra Simulada - Simulador de Infraestrutura de TI
+# 🏗️ Infra Simulada - Plataforma de Gerenciamento de Infraestrutura
 
-[![Node.js](https://img.shields.io/badge/Node.js-18+-green.svg)](https://nodejs.org/)
-[![React](https://img.shields.io/badge/React-18-blue.svg)](https://reactjs.org/)
-[![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3-blue.svg)](https://tailwindcss.com/)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+Uma plataforma completa para simular e gerenciar infraestrutura de TI, com foco em segurança na borda (edge security) e deploy serverless.
 
-## 📋 Descrição
+## 🚀 Tecnologias
 
-**Infra Simulada** é uma aplicação web full-stack educacional que simula um ambiente completo de infraestrutura de TI. Projetado para analistas e estudantes de infraestrutura, oferece hands-on experience com:
+- **Frontend**: React, Tailwind CSS, Recharts, React Router, React Joyride
+- **Backend**: Node.js (Serverless Functions)
+- **Deploy**: Vercel / Cloudflare Pages
+- **Segurança**: WAF simulado, Rate Limiting, DDoS Protection, Zero Trust
 
-- 🖥️ Gerenciamento de servidores Windows/Linux
-- 🌐 Configuração de redes, firewalls e VPNs
-- ☁️ Virtualização e Cloud Computing
-- 📊 Monitoramento com gráficos em tempo real
-- 💾 Backup e Recuperação de Desastres
-- 🤖 Automação com Scripts (PowerShell, Bash, Python)
-- 🎫 Sistema de Chamados estilo GLPI
-- 🔐 Segurança (Active Directory, GPOs, Zero Trust)
-- 🔄 Orquestração (Terraform, Ansible simulados)
-
-## 🚀 Instruções de Instalação e Execução
-
-### Pré-requisitos
-
-- **Node.js** 18+ instalado
-- **npm** 9+ ou **yarn** 1.22+
-- Navegador moderno (Chrome, Firefox, Edge)
-
-### Passo a Passo
-
-```bash
-# 1. Clonar o repositório
-git clone https://github.com/seu-usuario/infra-simulada.git
-cd infra-simulada
-
-# 2. Instalar dependências do backend
-cd backend
-npm install
-
-# 3. Instalar dependências do frontend
-cd ../frontend
-npm install
-
-# 4. Voltar para a raiz e instalar dependências do projeto
-cd ..
-npm install
-
-# 5. Iniciar a aplicação (backend + frontend simultaneamente)
-npm run dev
-```
-
-### Acessando a Aplicação
-
-Após executar `npm run dev`, a aplicação estará disponível em:
-
-- **Frontend**: http://localhost:5173
-- **Backend API**: http://localhost:3001
-
-## 📁 Estrutura do Projeto
+## 📦 Estrutura do Projeto
 
 ```
 infra-simulada/
-├── backend/
-│   ├── index.js              # Servidor Express principal
-│   ├── routes/               # Rotas da API
-│   │   ├── servers.js
-│   │   ├── network.js
-│   │   ├── virtualization.js
-│   │   ├── monitoring.js
-│   │   ├── backup.js
-│   │   ├── scripts.js
-│   │   ├── tickets.js
-│   │   ├── security.js
-│   │   └── orchestration.js
-│   ├── services/             # Lógica de negócio
-│   │   ├── serverService.js
-│   │   ├── networkService.js
-│   │   ├── vmService.js
-│   │   ├── monitoringService.js
-│   │   ├── backupService.js
-│   │   ├── scriptService.js
-│   │   ├── ticketService.js
-│   │   ├── securityService.js
-│   │   └── orchestrationService.js
-│   └── data/                 # Dados iniciais
-│       └── seedData.js
-├── frontend/
+├── api/                    # API Routes (Vercel/Cloudflare)
+│   ├── health.js
+│   ├── servers/
+│   ├── network/
+│   ├── virtualization/
+│   ├── monitoring/
+│   ├── backup/
+│   ├── scripts/
+│   ├── tickets/
+│   ├── security/
+│   └── orchestration/
+├── frontend/               # React Frontend
 │   ├── src/
-│   │   ├── components/       # Componentes reutilizáveis
-│   │   │   ├── ui/           # Botões, inputs, modals
-│   │   │   ├── Layout.jsx
-│   │   │   ├── Sidebar.jsx
-│   │   │   ├── Header.jsx
-│   │   │   └── TourGuide.jsx
-│   │   ├── modules/          # Módulos de infraestrutura
-│   │   │   ├── servers/
-│   │   │   ├── network/
-│   │   │   ├── virtualization/
-│   │   │   ├── monitoring/
-│   │   │   ├── backup/
-│   │   │   ├── scripts/
-│   │   │   ├── tickets/
-│   │   │   ├── security/
-│   │   │   └── orchestration/
-│   │   ├── services/         # Serviços do frontend
-│   │   ├── hooks/            # Hooks customizados
-│   │   ├── context/          # Context API
+│   │   ├── modules/
+│   │   │   └── edgeSecurity/  # Módulo Edge Security
 │   │   ├── App.jsx
-│   │   └── main.jsx
-│   ├── index.html
+│   │   └── ...
 │   └── package.json
-├── package.json              # Scripts do projeto
+├── vercel.json             # Configuração Vercel
 └── README.md
 ```
 
-## 🎮 Funcionalidades por Módulo
+## 🛡️ Módulo Edge Security
 
-### 1. 🖥️ Servidores
-- Criar, editar e remover servidores Windows/Linux
-- Simular ligar/desligar/ping
-- Visualizar consumo de CPU/RAM em tempo real
+O módulo Edge Security implementa conceitos de segurança na borda:
 
-### 2. 🌐 Rede
-- Visualizar topologia de rede
-- Configurar regras de firewall
-- Criar e gerenciar VPNs
-- Exibir tabelas ARP e rotas
+### WAF (Web Application Firewall)
+- Detecção de SQL Injection
+- Prevenção de XSS (Cross-Site Scripting)
+- Bloqueio de Path Traversal
+- Proteção contra Command Injection
 
-### 3. ☁️ Virtualização/Cloud
-- Criar VMs com pool de recursos limitado
-- Migrar VMs entre hosts
-- Simular migração para AWS/Azure/GCP
+### Rate Limiting
+- Limite de 100 requisições por minuto por IP
+- Headers de resposta: X-RateLimit-Limit, X-RateLimit-Remaining
+- Retorno HTTP 429 quando limite excedido
 
-### 4. 📊 Monitoramento
-- Dashboard com métricas em tempo real
-- Gráficos de CPU, RAM, rede e disco
-- Sistema de alertas configurável
-- Log de eventos
+### DDoS Protection
+- Simulação de detecção de anomalias de tráfego
+- Mitigação automática de ataques
+- Dashboard com estatísticas em tempo real
 
-### 5. 💾 Backup
-- Agendar backups de VMs e servidores
-- Simular execução e restauração
-- Logs detalhados de operações
+### Zero Trust
+- Verificação de identidade na borda (X-Auth-Token)
+- Políticas de acesso simuladas
+- Cloudflare Access-like authentication
 
-### 6. 🤖 Automação
-- Editor de scripts com syntax highlighting
-- Suporte a PowerShell, Bash e Python
-- Execução simulada com output realista
+## 🚀 Deploy na Vercel
 
-### 7. 🎫 Gestão de Chamados
-- Sistema de tickets estilo GLPI
-- Categorias e prioridades
-- Inventário de ativos
+### Pré-requisitos
+- Conta na Vercel (gratuita)
+- Vercel CLI instalado: `npm i -g vercel`
 
-### 8. 🔐 Segurança
-- Usuários Active Directory simulados
-- Políticas de Grupo (GPOs)
-- Princípios Zero Trust
+### Passos
 
-### 9. 🔄 Orquestração
-- Visualizar código Terraform simulado
-- Executar planos e apply
-- Playbooks Ansible
+1. **Clone o repositório**
+```bash
+git clone https://github.com/seu-usuario/infra-simulada.git
+cd infra-simulada
+```
 
-## 🎯 Tour Interativo
+2. **Instale as dependências**
+```bash
+cd frontend
+npm install
+cd ..
+```
 
-Na primeira visita, um tour interativo guia você por todas as funcionalidades. Você pode:
-- **Pular** o tour a qualquer momento
-- **Reiniciar** o tour pelo botão de ajuda (?)
+3. **Deploy com Vercel CLI**
+```bash
+vercel
+```
 
-## 🌙 Modo Escuro/Claro
+4. **Ou deploy via GitHub**
+   - Conecte seu repositório GitHub na Vercel
+   - A Vercel detectará automaticamente a configuração do `vercel.json`
+   - O deploy será automático a cada push
 
-Alternância suave entre temas claro e escuro no cabeçalho.
+### URL de Produção
+Após o deploy, sua aplicação estará disponível em:
+```
+https://seu-projeto.vercel.app
+```
 
-## 📚 Estudos de Caso
+## 🚀 Deploy na Cloudflare Pages
 
-Cada módulo inclui um ícone 💼 que abre estudos de casos reais de uso da tecnologia.
+### Pré-requisitos
+- Conta na Cloudflare (gratuita)
+- Wrangler CLI instalado: `npm i -g wrangler`
 
-## 🛠️ Tecnologias Utilizadas
+### Passos
 
-### Backend
-- **Node.js** 18+
-- **Express.js** 4.x
-- **CORS** para comunicação cross-origin
-- **UUID** para geração de IDs únicos
+1. **Build do frontend**
+```bash
+cd frontend
+npm run build
+cd ..
+```
+
+2. **Deploy com Wrangler**
+```bash
+wrangler pages project create infra-simulada
+wrangler pages deploy frontend/dist --project-name=infra-simulada
+```
+
+3. **Ou deploy via Dashboard Cloudflare**
+   - Acesse Cloudflare Pages
+   - Conecte seu repositório GitHub
+   - Configure:
+     - Build command: `cd frontend && npm install && npm run build`
+     - Build output directory: `frontend/dist`
+
+### URL de Produção
+Após o deploy, sua aplicação estará disponível em:
+```
+https://infra-simulada.pages.dev
+```
+
+## 🔧 Desenvolvimento Local
 
 ### Frontend
-- **React** 18
-- **Vite** 5
-- **TailwindCSS** 3
-- **Recharts** para gráficos
-- **React Joyride** para tour interativo
-- **React Router** para navegação
-- **Heroicons** para ícones
-- **React Hot Toast** para notificações
+```bash
+cd frontend
+npm install
+npm run dev
+```
+Acesse: http://localhost:5173
 
-## 📝 Licença
+### API (simulada)
+As API routes funcionam tanto em produção quanto em desenvolvimento local com Vercel CLI:
+```bash
+vercel dev
+```
 
-MIT License - veja o arquivo [LICENSE](LICENSE) para detalhes.
+## 🔐 Testando a Segurança na Borda
 
-## 👥 Contribuição
+### WAF
+1. Acesse o módulo "🛡️ Edge Security"
+2. Vá para a aba "🔥 WAF"
+3. Clique nos botões de payload malicioso (SQL Injection, XSS, etc)
+4. Observe o bloqueio na interface
+
+### Rate Limiting
+1. Acesse a aba "⚡ Rate Limit"
+2. Observe o contador de requisições restantes
+3. Faça múltiplas requisições para ver o limite
+
+### DDoS Simulation
+1. Acesse a aba "🛡️ DDoS"
+2. Clique em "Ativar Simulação DDoS"
+3. Observe os cards de detecção e mitigação
+
+### Zero Trust
+1. Acesse a aba "🔐 Zero Trust"
+2. Observe as políticas de acesso
+3. Veja a explicação sobre autenticação na borda
+
+## 📊 Módulos Disponíveis
+
+1. **🖥️ Servidores** - Gerenciamento de servidores Windows/Linux
+2. **🌐 Rede** - Firewall, VPN, Rotas e ARP
+3. **☁️ Virtualização** - VMs e pool de recursos
+4. **📈 Monitoramento** - Métricas e alertas em tempo real
+5. **💾 Backup** - Gestão de backups e restaurações
+6. **🤖 Scripts** - Automação com PowerShell, Bash e Python
+7. **🎫 Chamados** - Sistema de gestão de incidentes
+8. **🔐 Segurança** - AD, GPOs e Zero Trust
+9. **🔄 Orquestração** - Terraform e Ansible simulados
+10. **🛡️ Edge Security** - WAF, Rate Limiting, DDoS, Zero Trust
+
+## 🎓 Tour Interativo
+
+O sistema inclui um tour interativo (React Joyride) que explica cada módulo. Clique no ícone de "?" no header para iniciar.
+
+## 📝 Variáveis de Ambiente
+
+Nenhuma variável de ambiente é necessária para o funcionamento básico. Para persistência real entre deploys, configure:
+
+```
+UPSTASH_REDIS_URL=your_redis_url (opcional)
+```
+
+## 🤝 Contribuindo
 
 1. Fork o projeto
-2. Crie uma branch (`git checkout -b feature/nova-funcionalidade`)
-3. Commit suas mudanças (`git commit -m 'feat: adiciona nova funcionalidade'`)
-4. Push para a branch (`git push origin feature/nova-funcionalidade`)
+2. Crie uma branch: `git checkout -b feature/nova-feature`
+3. Commit as mudanças: `git commit -m 'feat: nova feature'`
+4. Push para a branch: `git push origin feature/nova-feature`
 5. Abra um Pull Request
 
-## 📧 Contato
+## 📄 Licença
 
-Projeto desenvolvido como ambiente educacional para análise de infraestrutura de TI.
+MIT License
+
+## 👨‍💻 Autor
+
+Daniel Gehlen - [GitHub](https://github.com/Daniel-Gehlen)
 
 ---
 
-**⭐ Se este projeto te ajudou, considere dar uma estrela no GitHub!**
+**Nota**: Este é um projeto educacional para demonstração de conceitos de infraestrutura e segurança na borda. Os dados são simulados e não persistem entre deploys na versão gratuita.
