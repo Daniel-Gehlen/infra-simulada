@@ -18,6 +18,8 @@ import {
   CpuChipIcon, CircleStackIcon as DiskIcon, UserGroupIcon
 } from '@heroicons/react/24/outline';
 import { EdgeSecurityModule } from './modules/edgeSecurity';
+import { CheckpointModule } from './modules/checkpoint';
+import { SecurityPoliciesModule } from './modules/securityPolicies';
 
 const API_BASE = '/api';
 
@@ -1036,6 +1038,8 @@ function App() {
               <Route path="/security" element={<SecurityModule />} />
               <Route path="/orchestration" element={<OrchestrationModule />} />
               <Route path="/edge-security" element={<EdgeSecurityModule />} />
+              <Route path="/checkpoint" element={<CheckpointModule />} />
+              <Route path="/security-policies" element={<SecurityPoliciesModule />} />
             </Routes>
           </main>
         </div>
