@@ -9,8 +9,8 @@ for (let i = 0; i < 20; i++) {
 }
 
 let alerts = [
-  { id: 'alt-001', severity: 'warning', message: 'CPU do DB-PROD-01 acima de 75%', timestamp: new Date().toISOString(), resolved: false },
-  { id: 'alt-002', severity: 'critical', message: 'Servidor FILE-SERVER offline', timestamp: new Date().toISOString(), resolved: false },
+  { id: 'alt-001', severity: 'warning', message: 'CPU do DB-PROD-01 acima de 75%', timestamp: new Date().toISOString(), resolved: true },
+  { id: 'alt-002', severity: 'critical', message: 'Servidor FILE-SERVER offline', timestamp: new Date().toISOString(), resolved: true },
   { id: 'alt-003', severity: 'info', message: 'Backup noturno concluído com sucesso', timestamp: new Date().toISOString(), resolved: true }
 ];
 
@@ -58,7 +58,7 @@ export default async function handler(req, res) {
         res.status(200).json({
           success: true,
           data: {
-            servers: { online: 3, total: 4 },
+            servers: { online: 4, total: 4 },
             vms: { running: 2, total: 2 },
             alerts: {
               critical: alerts.filter(a => a.severity === 'critical' && !a.resolved).length,

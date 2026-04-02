@@ -12,8 +12,8 @@ app.use(express.json());
 let servers = [
   { id: 'srv-001', name: 'DC-PRINCIPAL', os: 'Windows Server 2022', ip: '192.168.1.10', status: 'online', cpu: 45, ram: 62, disk: 55, role: 'Domain Controller', location: 'Data Center A', createdAt: new Date().toISOString() },
   { id: 'srv-002', name: 'WEB-SERVER-01', os: 'Ubuntu 22.04 LTS', ip: '192.168.1.20', status: 'online', cpu: 32, ram: 48, disk: 40, role: 'Web Server', location: 'Data Center A', createdAt: new Date().toISOString() },
-  { id: 'srv-003', name: 'DB-PROD-01', os: 'Windows Server 2019', ip: '192.168.1.30', status: 'online', cpu: 78, ram: 85, disk: 72, role: 'Database Server', location: 'Data Center B', createdAt: new Date().toISOString() },
-  { id: 'srv-004', name: 'FILE-SERVER', os: 'Windows Server 2022', ip: '192.168.1.40', status: 'offline', cpu: 0, ram: 0, disk: 65, role: 'File Server', location: 'Data Center A', createdAt: new Date().toISOString() }
+  { id: 'srv-003', name: 'DB-PROD-01', os: 'Windows Server 2019', ip: '192.168.1.30', status: 'online', cpu: 35, ram: 42, disk: 72, role: 'Database Server', location: 'Data Center B', createdAt: new Date().toISOString() },
+  { id: 'srv-004', name: 'FILE-SERVER', os: 'Windows Server 2022', ip: '192.168.1.40', status: 'online', cpu: 12, ram: 25, disk: 65, role: 'File Server', location: 'Data Center A', createdAt: new Date().toISOString() }
 ];
 
 let vms = [
@@ -24,13 +24,19 @@ let vms = [
 const resourcePool = { totalVcpus: 16, totalRam: 64, totalDisk: 1000, usedVcpus: 6, usedRam: 12, usedDisk: 150 };
 
 let firewallRules = [
+  { id: 'fw-stealth', name: 'Check Point Stealth Rule', action: 'deny', protocol: 'any', port: 'any', source: 'any', destination: 'Gateway_Firewall', enabled: true, description: 'Bloqueia acesso direto ao Firewall' },
   { id: 'fw-001', name: 'Allow SSH', action: 'allow', protocol: 'TCP', port: 22, source: '192.168.1.0/24', destination: 'any', enabled: true },
+  { id: 'fw-icmp', name: 'Allow ICMP Admin', action: 'allow', protocol: 'ICMP', port: 'any', source: '192.168.1.0/24', destination: 'any', enabled: true, description: 'Permite ping para troubleshooting interno' },
   { id: 'fw-002', name: 'Allow HTTP', action: 'allow', protocol: 'TCP', port: 80, source: 'any', destination: 'any', enabled: true },
   { id: 'fw-003', name: 'Allow HTTPS', action: 'allow', protocol: 'TCP', port: 443, source: 'any', destination: 'any', enabled: true },
-  { id: 'fw-004', name: 'Block Telnet', action: 'deny', protocol: 'TCP', port: 23, source: 'any', destination: 'any', enabled: true }
+  { id: 'fw-004', name: 'Block Telnet', action: 'deny', protocol: 'TCP', port: 23, source: 'any', destination: 'any', enabled: true },
+  { id: 'fw-cleanup', name: 'Cleanup Rule', action: 'deny', protocol: 'any', port: 'any', source: 'any', destination: 'any', enabled: true, description: 'Drop Any Any final' }
 ];
 
-let vpns = [{ id: 'vpn-001', name: 'VPN-CORPORATIVA', type: 'IPSec', status: 'active', remoteEndpoint: '200.100.50.1', localSubnet: '192.168.1.0/24', remoteSubnet: '10.0.0.0/24', connectedUsers: 12, createdAt: new Date().toISOString() }];
+let vpns = [
+  { id: 'vpn-001', name: 'VPN-CORPORATIVA', type: 'IPSec', status: 'active', remoteEndpoint: '200.100.50.1', localSubnet: '192.168.1.0/24', remoteSubnet: '10.0.0.0/24', connectedUsers: 12, createdAt: new Date().toISOString() },
+  { id: 'vpn-ra-01', name: 'Remote-Access-VPN', type: 'Check Point Mobile', status: 'active', remoteEndpoint: '0.0.0.0', localSubnet: '192.168.1.0/24', remoteSubnet: 'VPN_Pool', connectedUsers: 5, createdAt: new Date().toISOString() }
+];
 
 const staticRoutes = [
   { id: 'rt-001', destination: '10.0.0.0/24', gateway: '192.168.1.1', interface: 'eth0', metric: 10 },
@@ -55,8 +61,8 @@ for (let i = 0; i < 20; i++) {
 }
 
 let alerts = [
-  { id: 'alt-001', severity: 'warning', message: 'CPU do DB-PROD-01 acima de 75%', timestamp: new Date().toISOString(), resolved: false },
-  { id: 'alt-002', severity: 'critical', message: 'Servidor FILE-SERVER offline', timestamp: new Date().toISOString(), resolved: false },
+  { id: 'alt-001', severity: 'warning', message: 'CPU do DB-PROD-01 acima de 75%', timestamp: new Date().toISOString(), resolved: true },
+  { id: 'alt-002', severity: 'critical', message: 'Servidor FILE-SERVER offline', timestamp: new Date().toISOString(), resolved: true },
   { id: 'alt-003', severity: 'info', message: 'Backup noturno concluído com sucesso', timestamp: new Date().toISOString(), resolved: true }
 ];
 

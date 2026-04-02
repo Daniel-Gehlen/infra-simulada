@@ -4,8 +4,8 @@ import { v4 as uuidv4 } from 'uuid';
 let servers = [
   { id: 'srv-001', name: 'DC-PRINCIPAL', os: 'Windows Server 2022', ip: '192.168.1.10', status: 'online', cpu: 45, ram: 62, disk: 55, role: 'Domain Controller', location: 'Data Center A', createdAt: new Date().toISOString() },
   { id: 'srv-002', name: 'WEB-SERVER-01', os: 'Ubuntu 22.04 LTS', ip: '192.168.1.20', status: 'online', cpu: 32, ram: 48, disk: 40, role: 'Web Server', location: 'Data Center A', createdAt: new Date().toISOString() },
-  { id: 'srv-003', name: 'DB-PROD-01', os: 'Windows Server 2019', ip: '192.168.1.30', status: 'online', cpu: 78, ram: 85, disk: 72, role: 'Database Server', location: 'Data Center B', createdAt: new Date().toISOString() },
-  { id: 'srv-004', name: 'FILE-SERVER', os: 'Windows Server 2022', ip: '192.168.1.40', status: 'offline', cpu: 0, ram: 0, disk: 65, role: 'File Server', location: 'Data Center A', createdAt: new Date().toISOString() }
+  { id: 'srv-003', name: 'DB-PROD-01', os: 'Windows Server 2019', ip: '192.168.1.30', status: 'online', cpu: 35, ram: 42, disk: 72, role: 'Database Server', location: 'Data Center B', createdAt: new Date().toISOString() },
+  { id: 'srv-004', name: 'FILE-SERVER', os: 'Windows Server 2022', ip: '192.168.1.40', status: 'online', cpu: 12, ram: 25, disk: 65, role: 'File Server', location: 'Data Center A', createdAt: new Date().toISOString() }
 ];
 
 function setCorsHeaders(res) {
