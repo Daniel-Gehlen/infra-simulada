@@ -17,8 +17,14 @@ import {
   FolderIcon, ComputerDesktopIcon, WifiIcon, LockClosedIcon,
   CpuChipIcon, CircleStackIcon as DiskIcon, UserGroupIcon
 } from '@heroicons/react/24/outline';
+import { SecurityPoliciesModule } from './modules/securityPolicies';
+>>>>>>> feature/politicas-seguranca
 import { EdgeSecurityModule } from './modules/edgeSecurity';
 import { CheckpointModule } from './modules/checkpoint';
+import { SecurityPoliciesModule } from './modules/securityPolicies';
+=======
+import { SecurityPoliciesModule } from './modules/securityPolicies';
+>>>>>>> feature/politicas-seguranca
 
 const API_BASE = '/api';
 
@@ -1036,9 +1042,17 @@ function App() {
               <Route path="/scripts" element={<ScriptsModule />} />
               <Route path="/tickets" element={<TicketsModule />} />
               <Route path="/security" element={<SecurityModule />} />
+              <Route path="/checkpoint" element={<CheckpointModule />} />
+              <Route path="/security-policies" element={<SecurityPoliciesModule />} />
+>>>>>>> feature/politicas-seguranca
               <Route path="/orchestration" element={<OrchestrationModule />} />
               <Route path="/edge-security" element={<EdgeSecurityModule />} />
-<Route path="/checkpoint" element={<CheckpointModule />} />
+              <Route path="/checkpoint" element={<CheckpointModule />} />
+              <Route path="/security-policies" element={<SecurityPoliciesModule />} />
+=======
+              <Route path="/checkpoint" element={<CheckpointModule />} />
+              <Route path="/security-policies" element={<SecurityPoliciesModule />} />
+>>>>>>> feature/politicas-seguranca
             </Routes>
           </main>
         </div>
