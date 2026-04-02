@@ -18,6 +18,7 @@ import {
   CpuChipIcon, CircleStackIcon as DiskIcon, UserGroupIcon
 } from '@heroicons/react/24/outline';
 import { EdgeSecurityModule } from './modules/edgeSecurity';
+import { CheckpointModule } from './modules/checkpoint';
 
 const API_BASE = '/api';
 
@@ -224,6 +225,7 @@ function Sidebar({ collapsed, setCollapsed }) {
     { id: 'security', path: '/security', icon: ShieldCheckIcon, label: 'Segurança' },
     { id: 'orchestration', path: '/orchestration', icon: CogIcon, label: 'Orquestração' },
     { id: 'edge-security', path: '/edge-security', icon: ShieldCheckIcon, label: '🛡️ Edge Security' },
+{ id: 'checkpoint', path: '/checkpoint', icon: ShieldCheckIcon, label: '🔒 Check Point' },
   ];
 
   return (
@@ -1036,6 +1038,7 @@ function App() {
               <Route path="/security" element={<SecurityModule />} />
               <Route path="/orchestration" element={<OrchestrationModule />} />
               <Route path="/edge-security" element={<EdgeSecurityModule />} />
+<Route path="/checkpoint" element={<CheckpointModule />} />
             </Routes>
           </main>
         </div>
